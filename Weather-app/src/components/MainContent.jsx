@@ -1,4 +1,4 @@
-import { useState , useEffect} from "react";
+import { useState , useEffect , useRef} from "react";
 export default function MainContent() {
   const [weekDaystatus, setWeekDayStatus] = useState(false);
   const [weekDaytext, setWeekDayText] = useState(new Date().toLocaleDateString("en-US", 
@@ -24,6 +24,10 @@ export default function MainContent() {
   const [isInches, setIsInches] = useState(false);
   const [ismetric , setIsMetric] = useState(false);
   const [isImperial , setIsImperial] = useState(true);
+  const [exist , setExist] = useState(null);
+  const [suggestions , setSuggestions] = useState([]);
+  const [selectedSuggestion , setSelectedSuggestion] = useState(false);
+  const inputRef = useRef(null);
 
     //toggles to on and off Unites button on header
    function UniteStatus() {
@@ -92,12 +96,14 @@ export default function MainContent() {
       setTempUnit("°F");
       setWindUnit("mph");
       setPrecipitationUnit("in");
+      setUnitesStatus(false);
     }else if(!isImperial){
       setIsImperial(true);
       setIsMetric(false);
       setTempUnit("°C");
       setWindUnit("km/h");
       setPrecipitationUnit("mm");
+      setUnitesStatus(false);
     }
   }
 
@@ -141,6 +147,11 @@ export default function MainContent() {
       return "../src/assets/images/icon-sunny.webp";
   }
 
+  function setValueAndSelectedSuggestion(e){
+    setInputValue(e.target.value);
+    setSelectedSuggestion(false);
+  }
+
     //this function below will fetch the weather data from api and set it to weatherdata state
     // also handles errors if there is any problem with fetching data from api or if the user is offline
     async function fetchWeatherData() {
@@ -174,8 +185,12 @@ export default function MainContent() {
         const res = await fetch(`https://geocode.maps.co/search?q=${cityAndCountry}&api_key=699dfd1d708ea910992554bauee06b2`);
         const result = await res.json();
         if (result.length > 0) {
+          setExist(true);
           setCityAndCountry(result[0].display_name);
           setLatAndLong({ lat: result[0].lat, long: result[0].lon });
+          console.log(result);
+        }else if(result <= 0){
+          setExist(false);
         }
       } catch (err) {
         console.error("Something went wrong: ", err);
@@ -189,10 +204,30 @@ export default function MainContent() {
     fetchCityAndCountry();
 }, [cityAndCountry]);
 
+{/* fetches suggestion and shows below search input (got it from Ai) */}
+useEffect(() => {
+  if (!inputValue.trim()) {
+    setSuggestions([]);
+    return;
+  }
 
+  const timer = setTimeout(() => {
+    fetch(`https://geocode.maps.co/search?q=${encodeURIComponent(inputValue)}&api_key=699dfd1d708ea910992554bauee06b2`)
+      .then(res => {
+        if (!res.ok) throw new Error("Network error");
+        return res.json();
+      })
+      .then(data => {
+        setSuggestions(data.slice(0, 5)); // limit to 5 results
+      })
+      .catch(err => {
+        console.error(err);
+        setSuggestions([]);
+      });
+  }, 300);
 
-
-
+  return () => clearTimeout(timer);
+}, [inputValue]);
 
 
 
@@ -320,13 +355,37 @@ export default function MainContent() {
         <h1>How's the sky looking today?</h1>
         <form onSubmit={handlesubmit}>
           <img src="../src/assets/images/icon-search.svg" className="search-icon"/>
-          <input type="text" className="location-input" placeholder="Search for place..." value={inputValue} onChange={(e) => setInputValue(e.target.value)}/>
+          <input ref={inputRef} type="text" className="location-input" placeholder="Search for place..." value={inputValue} onChange={setValueAndSelectedSuggestion}/>
           <button type="submit" className="search-btn" onClick={searchbtnfuncs}>Search</button>
         </form>
       </div>}
+      {/* this line will appear only when no result returns from searching a location */}
+      {!exist && <h3 className="no-result-h3">No Search result found!</h3>}
+
+      {/* suggestion part below search input */}
+      {suggestions.length > 0 && selectedSuggestion === false && (
+        <div className="suggestions-wrapper">
+          <ul className="suggestions">
+            {suggestions.map((place) => (
+              <li
+                key={place.place_id}
+                onClick={() => {
+                  setInputValue(place.display_name);
+                  setSuggestions([]);
+                  inputRef.current.blur();
+                  searchbtnfuncs();
+                  setSelectedSuggestion(true);
+                }}
+              >
+                {place.display_name}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {/* everything below the search input and button starts from here */}
-      {!error && <div className="container">
+      {!error && exist && <div className="container">
         <div className="left-side-content">
           <div className="location-date-temp" style={{background: loading && "rgba(147, 160, 185, 0.26)"}}>
             {loading && <h3 className="Loading-text" style={{color: "rgb(194, 194, 194)" , position: "absolute" , left: "43%"}}>Loading...</h3>}
