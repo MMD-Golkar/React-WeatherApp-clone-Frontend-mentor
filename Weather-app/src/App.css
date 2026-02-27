@@ -1,0 +1,713 @@
+.wrapper{
+  background-color: rgb(0, 0, 32);
+}
+
+/*-------- Header styles start from here --------*/
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.header-logo{
+  width: 200px;
+  margin-left: 80px;
+  margin-top: 30px;
+}
+.header-dropdown{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding:5px 10px;
+  height: 35px;
+  background-color: rgba(99, 99, 99, 0.411);
+  color: white;
+  gap: 5px;
+  border: none;
+  border-radius: 6px;
+  margin-top: 30px;
+  margin-right: 80px;
+  cursor: pointer;
+  position: relative;
+}
+.header-dropdown:hover{
+  background-color: rgba(99, 99, 99, 0.651);
+}
+.header-dropdown-content{
+  position: absolute;
+  width: 170px;
+  height: 337px;
+  background-color: rgba(99, 99, 99, 0.288);
+  right: 80px;
+  top: 75px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+}
+.celsius-btn ,
+.fahrenheit-btn ,
+.kmh-btn ,
+.mph-btn ,
+.millimeters-btn ,
+.inches-btn{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  height: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 6px;
+  background-color: rgba(99, 99, 99, 0);
+  border: none;
+  margin-left: 5px;
+  margin-right: 5px;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 3px;
+}
+.celsius-btn:hover{
+  background-color: rgba(99, 99, 99, 0.568);
+}
+.temperature-type-text ,
+.windspeed-type-text ,
+.precipitation-type-text{
+  color: rgb(172, 172, 172);
+  font-size: 12px;
+  margin-left: 15px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  letter-spacing: .3px;
+}
+.switch-imperial-btn{
+  height: 30px;
+  text-align: start;
+  padding-left: 10px;
+  margin-top: 5px;
+  padding-right: 10px;
+  border-radius: 6px;
+  background-color: rgba(158, 153, 153, 0);
+  border: none;
+  margin-left: 5px;
+  margin-right: 5px;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 3px;
+}
+.switch-imperial-btn:hover{
+  background-color: rgba(99, 99, 99, 0.288);
+}
+.seprate-line{
+  background-color: rgba(196, 196, 196, 0.459);
+  height: 1px;
+  width: 1fr;
+  margin: 3px 6px 3px 6px;
+}
+@media (max-width: 550px) {
+  .header-dropdown{
+    margin-right: 20px;
+    height: 30px;
+    padding: 0 10px;
+    margin-top: 31px;
+    z-index: 4;
+  }
+  .header-logo{
+    margin-left: 20px;
+    width: 160px;
+    z-index: 4;
+  }
+  .header-dropdown-content{
+    right: 20px;
+    height: 280px;
+    width: 140px;
+    background-color: rgba(128, 128, 128, 0.486);
+    z-index: 4;
+  }
+  .celsius-btn ,
+.fahrenheit-btn ,
+.kmh-btn ,
+.mph-btn ,
+.millimeters-btn ,
+.inches-btn{
+  font-size: 12px;
+}
+ .dropdown-blurbg{
+  width: 100%;
+  height: 1000px;
+  position: absolute;
+  z-index: 3;
+  margin-top: -300px;
+  backdrop-filter: blur(10px);
+ }
+}
+
+
+/*-------- SearchSection styles start from here --------*/
+.searchsection-wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+.searchsection-wrapper h1{
+  color: white;
+  font-size: 40px;
+  margin-bottom: 50px;
+}
+.search-icon{
+  position: absolute;
+  padding-left: 20px;
+  padding-top: 8px;
+  width: 37px;
+}
+.location-input{
+  background-color: rgba(99, 99, 99, 0.411);
+  border: none;
+  height: 35px;
+  position: relative;
+  border-radius: 6px;
+  margin-right: 10px;
+  color: white;
+  padding-left: 60px;
+}
+.location-input::placeholder{
+  color: rgba(196, 196, 196, 0.459);
+  font-size: 15px;
+}
+.location-input:focus{
+  border: 2px solid white;
+}
+.search-btn{
+  background-color: rgb(65, 77, 241);
+  padding: 10px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  color: white;
+}
+.search-btn:hover{
+  background-color: rgb(81, 92, 238);
+}
+.search-btn:active{
+  outline: 1px solid rgb(65, 77, 241);
+  border: 2px solid black;
+  padding: 8px 8px;
+}
+
+
+
+
+@media (max-width:550px){
+  .searchsection-wrapper h1{
+    max-width: 170px;
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
+  .search-icon{
+    padding-top: 12px;
+  }
+  .location-input{
+    all: unset;
+    box-sizing: border-box;
+    background-color: rgba(99, 99, 99, 0.411);
+    border: none;
+    height: 42px;
+    font-size: 17px;
+    position: relative;
+    border-radius: 6px;
+    width: 100%;
+    color: white;
+    padding-left: 60px;
+    margin-bottom: 10px;
+  }
+  .location-input::placeholder{
+    font-size: 17px;
+  }
+  form{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+  }
+  .search-btn{
+    height: 42px;
+  }
+}
+@media (min-width:551px) {
+  .searchsection-wrapper h1 {
+    font-size: 30px;
+  }
+  .location-input{
+    width: 320px;
+  }
+}
+@media (min-width:1250px) {
+  .searchsection-wrapper h1 {
+    font-size: 50px;
+  }
+  .location-input{
+    width: 450px;
+    height: 40px;
+    font-size: 17px;
+  }
+  .location-input::placeholder{
+    font-size: 17px;
+  }
+  .search-icon{
+    width: 40px;
+    padding-top: 10px;
+  }
+  .search-btn{
+    padding: 13px 15px;
+  }
+  .search-btn:active{
+    padding: 11px 13px;
+  }
+}
+/*-------- MainContent styles start from here --------*/
+
+.container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 40px;
+}
+.left-side-content{
+  display: flex;
+  flex-direction: column;
+  margin-left: 70px;
+}
+.location-date-temp{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../src/assets/images/bg-today-large.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: none;
+  padding: 70px 30px;
+  border-radius: 15px;
+  max-height: 220px;
+}
+.temp-div{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-left: 136px;
+  padding-right: 10px;
+}
+.temp-icon{
+  width: 80px;
+  display: inline;
+  margin-top: -10px;
+}
+.temp{
+  color: white;
+  font-size: 70px;
+  font-style: italic;
+}
+.location-date-div{
+  color: white;
+  letter-spacing: .5px;
+  font-style: italic;
+  padding-left: 10px;
+}
+.date{
+  font-size: 15px;
+  color: rgb(211, 211, 211);
+  margin-top: 5px;
+}
+.location{
+  font-size: 26px;
+  max-width: 215px;
+}
+.right-side-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 20px;
+  background-color: rgba(147, 160, 185, 0.26);
+  border-radius: 15px;
+  overflow-y: auto;
+  max-height: 563px;
+  scroll-behavior: smooth;
+}
+.right-side-content::-webkit-scrollbar{
+  width: 2px;
+}
+.right-side-content::-webkit-scrollbar-track{
+  border-radius: 50px;
+  margin: 15px 0;
+}
+.right-side-content::-webkit-scrollbar-thumb{
+  background-color: rgba(147, 160, 185, 0.288);
+}
+.right-side-content::-webkit-scrollbar-thumb:hover{
+  background-color: rgba(147, 160, 185, 0.575);
+  cursor: pointer;
+}
+.hourly-forecast-text{
+  color: white;
+  margin-left: 15px;
+  margin-right: 55px;
+  margin-top: 3px;
+  letter-spacing: .5px;
+}
+.hourly-forecast-wrapper{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  z-index: 7;
+  width: 100%;
+  height: 40px;
+  position: relative;
+}
+.weekday-dropdown-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(92, 115, 158, 0.267);
+  border: 1px solid rgba(128, 128, 128, 0.178);
+  padding: 5px 10px;
+  margin-right: 15px;
+  border-radius: 5px;
+  z-index: 6;
+}
+.weekday-dropdown-btn p{
+  color: white;
+}
+.weekday-dropdown-btn img{
+  width: 11px;
+  margin-left: 5px;
+  margin-top: 3px;
+}
+.weekly-dropdown{
+  display: flex;
+  flex-direction: column;
+  right: 5%;
+  margin-top: 40px;
+  width: 150px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background-color: rgb(55, 51, 97);
+  border: 1px solid rgba(165, 165, 165, 0.212);
+  border-radius: 7px;
+}
+.weekly-dropdown button{
+  background-color: transparent;
+  border: none;
+  color: white;
+  width: 90%;
+  height: 25px;
+  border-radius: 7px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  letter-spacing: .5px;
+  font-size: 13px;
+}
+.weekly-dropdown button:hover{
+  background-color: rgb(65, 61, 114);
+}
+.hourly-forecast-btn{
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(99, 99, 99, 0.356);
+  border: 1px solid rgba(165, 165, 165, 0.212);
+  justify-content: center;
+  cursor: pointer;
+  align-items: center;
+  border-radius: 4px;
+  width: 250px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding: 5px 10px;
+}
+.hourly-forecast-btn img{
+  width: 30px;
+}
+.hourly-forecast-btn h3{
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+}
+.hourly-forecast-btn p{
+  margin-left: 140px;
+  color: white;
+  font-style: italic;
+}
+
+.fhwp-container{
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+}
+.fhwp-div{
+  display: flex;
+  flex-direction: column;
+  color: white;
+  background-color: rgba(147, 160, 185, 0.26);
+  width: 149px;
+  margin-right: 5px;
+  height: 90px;
+  justify-content: center;
+  border-radius: 15px;
+}
+.fhwp-div1{
+  display: flex;
+  flex-direction: column;
+  color: white;
+  background-color: rgba(147, 160, 185, 0.26);
+  width: 150px;
+  margin-right: 5px;
+  height: 90px;
+  border-radius: 15px;
+  justify-content: center;
+}
+.fhwp-div4{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  background-color: rgba(147, 160, 185, 0.26);
+  width: 149px;
+  height: 90px;
+  border-radius: 15px;
+}
+.fhwp-div1 p,
+.fhwp-div p,
+.fhwp-div4 p{
+  margin-bottom: 20px;
+  padding-left: 10px;
+  color: rgb(194, 194, 194);
+  font-size: 13px;
+  letter-spacing: .5px;
+}
+.fhwp-div1 h2,
+.fhwp-div h2,
+.fhwp-div4 h2{
+  font-size: 21px;
+  margin-left: 12px;
+  color: rgba(255, 255, 255, 0.87);
+  font-weight: 500;
+}
+.daily-forecast-text{
+  color: rgba(255, 255, 255, 0.966);
+  margin-top: 40px;
+  margin-left: 5px;
+}
+.daily-forecast-wrapper{
+  display: flex;
+  margin-top: 15px;
+}
+.daily-forecast-container1{
+  display: flex;
+  background-color: rgba(147, 160, 185, 0.26);
+  border-radius: 15px;
+  width: 83px;
+  height: 150px;
+}
+.daily-forecast-container{
+  display: flex;
+  background-color: rgba(147, 160, 185, 0.26);
+  border-radius: 15px;
+  width: 83px;
+  margin-left: 5px;
+}
+.daily-forecast-container7{
+  display: flex;
+  background-color: rgba(147, 160, 185, 0.26);
+  border-radius: 15px;
+  width: 83px;
+  margin-left: 5px;
+}
+.daily-forecast-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.938);
+}
+.daily-forecast-div img{
+  width: 50px;
+  display: inline;
+  margin-top: 20px;
+}
+.temps2{
+  display: flex;
+}
+.temps2 p{
+  margin-top: 20px;
+  margin-left: 12px;
+  margin-right: 5px;
+}
+.loading-text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(194, 194, 194);
+}
+.error-content-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin-top: 80px;
+}
+.error-content-container img{
+  width: 25px;
+  height: 25px;
+  margin-bottom: 20px;
+}
+.error-content-container h1{
+  margin-bottom: 20px;
+}
+.error-content-container p{
+  font-size: 12px;
+  color: rgb(206, 206, 206);
+  margin-bottom: 5px;
+}
+.error-content-container button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  width: 80px;
+  height: 30px;
+  background-color: rgba(105, 105, 105, 0.404);
+  border-radius: 5px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+.error-content-container button:hover{
+  background-color: rgba(105, 105, 105, 0.534);
+}
+.error-content-container button img{
+  width: 12px;
+  height: 12px;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+.error-content-container button p{
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-right: 10px;
+}
+@media (max-width: 1050px){
+  .container{
+    flex-wrap: wrap;
+  }
+  .right-side-content{
+    margin-top: 50px;
+  }
+  .left-side-content{
+    margin: 0;
+  }
+}
+
+@media (max-width: 550px) {
+  .location-date-temp{
+    flex-direction: column;
+    background-image: url("../src/assets/images/bg-today-small.svg");
+    width: 100%;
+    margin: 0;
+  }
+  .location{
+    max-width: 300px;
+    margin-top: 10px;
+    font-size: 24px;
+  }
+  .left-side-content{
+    margin-left: 0;
+    width: 90%;
+    max-width: 450px;
+  }
+  .temp-div{
+    padding-left: 0;
+    margin-top: 30px;
+    padding: 0;
+    margin-left: -50px;
+  }
+  .fhwp-container{
+    display: grid;
+    grid-template-columns: repeat(2 ,1fr);
+    grid-template-rows: repeat(2 ,1fr);
+    gap: 12px;
+  }
+  .fhwp-div ,
+  .fhwp-div1,
+  .fhwp-div4{
+    width: 100%;
+    height: 120px;
+  }
+  .daily-forecast-wrapper{
+    display: grid;
+    grid-template-columns: repeat(3 ,1fr);
+    gap: 12px;
+    max-width: 450px;
+    width: 100%;
+  }
+  .daily-forecast-container7,
+  .daily-forecast-container,
+  .daily-forecast-container1{
+    margin: 0;
+    padding: 0;
+    width: 95%;
+    margin-top: 20px;
+    justify-content: center;
+    height: 200px;
+  }
+  .temps2 p{
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 40px;
+  }
+  .daily-forecast-div img{
+    margin-top: 30px;
+    width: 70px;
+  }
+  .container{
+    flex-direction: column;
+    align-items: center;
+  }
+  .right-side-content{
+    max-width: 450px;
+    width: 95%;
+    margin: 0;
+    margin-top: 40px;
+    margin-bottom: 70px;
+  }
+  .hourly-forecast-btn{
+    width: 350px;
+    margin-top: 20px;
+  }
+}
+@media (max-width: 370px){
+  .hourly-forecast-btn{
+    width: 280px;
+    margin-top: 20px;
+  }
+  .right-side-content{
+    margin-left: 5px;
+  }
+  .daily-forecast-div img{
+    margin-top: 30px;
+    width: 50px;
+  }
+  .temps2 p{
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 40px;
+  }
+  .daily-forecast-container7,
+  .daily-forecast-container,
+  .daily-forecast-container1{
+    width: 90%;
+  }
+}
